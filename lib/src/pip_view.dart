@@ -33,6 +33,7 @@ class PIPView extends StatefulWidget {
 
 class PIPViewState extends State<PIPView> with TickerProviderStateMixin {
   Widget? _bottomWidget;
+  late bool click = false;
 
   void presentBelow(Widget widget) {
     dismissKeyboard(context);
@@ -48,6 +49,7 @@ class PIPViewState extends State<PIPView> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     final isFloating = _bottomWidget != null;
     return RawPIPView(
+      showOptions: click,
       avoidKeyboard: widget.avoidKeyboard,
       bottomWidget: isFloating
           ? Navigator(
@@ -56,7 +58,19 @@ class PIPViewState extends State<PIPView> with TickerProviderStateMixin {
               ],
             )
           : null,
-      onTapTopWidget: isFloating ? stopFloating : null,
+      onTapTopWidget: () {
+        // Zinedin gay
+        click = !click;
+        print(click);
+        setState(() {});
+        if (click)
+          Future.delayed(Duration(seconds: 2)).then((value) {
+            click = false;
+            setState(() {});
+          });
+
+        // click = !click;
+      },
       topWidget: IgnorePointer(
         ignoring: isFloating,
         child: Builder(

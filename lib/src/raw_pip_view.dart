@@ -9,6 +9,7 @@ class RawPIPView extends StatefulWidget {
   final bool avoidKeyboard;
   final Widget? topWidget;
   final Widget? bottomWidget;
+  final bool showOptions;
   // this is exposed because trying to watch onTap event
   // by wrapping the top widget with a gesture detector
   // causes the tap to be lost sometimes because it
@@ -24,6 +25,7 @@ class RawPIPView extends StatefulWidget {
     this.topWidget,
     this.bottomWidget,
     this.onTapTopWidget,
+    this.showOptions = false,
   }) : super(key: key);
 
   @override
@@ -234,7 +236,7 @@ class RawPIPViewState extends State<RawPIPView> with TickerProviderStateMixin {
                         elevation: 10,
                         borderRadius: BorderRadius.circular(borderRadius),
                         child: Container(
-                          clipBehavior: Clip.antiAlias,
+                          // clipBehavior: Clip.antiAlias,
                           decoration: BoxDecoration(
                             color: Colors.transparent,
                             borderRadius: BorderRadius.circular(borderRadius),
@@ -243,18 +245,40 @@ class RawPIPViewState extends State<RawPIPView> with TickerProviderStateMixin {
                           height: height,
                           child: Transform.scale(
                             scale: scale,
-                            child: OverflowBox(
-                              maxHeight: fullWidgetSize.height,
-                              maxWidth: fullWidgetSize.width,
-                              child: child,
-                            ),
+                            child: child,
                           ),
                         ),
                       ),
                     ),
                   );
                 },
-                child: widget.topWidget,
+                child: Stack(
+                  clipBehavior: Clip.none,
+                  children: [
+                    if (widget.topWidget != null) widget.topWidget!,
+                    if (widget.showOptions) ...[
+                      Container(
+                        height: 200,
+                        color: Colors.grey.withOpacity(.2),
+                      ),
+                      Center(
+                        child: Icon(
+                          Icons.play_arrow,
+                          color: Colors.black,
+                          size: 50,
+                        ),
+                      ),
+                      Positioned(
+                        top: -50,
+                        child: Icon(
+                          Icons.play_arrow,
+                          color: Colors.black,
+                          size: 50,
+                        ),
+                      ),
+                    ]
+                  ],
+                ),
               ),
           ],
         );

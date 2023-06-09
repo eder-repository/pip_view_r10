@@ -15,14 +15,13 @@ class ExampleApp extends StatelessWidget {
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return PIPView(
-      builder: (context, isFloating) {
-        return Scaffold(
-          resizeToAvoidBottomInset: !isFloating,
-          body: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
+    return SafeArea(
+      child: Scaffold(
+        body: PIPView(
+            floatingWidth: 300,
+            floatingHeight: 150,
+            builder: (context, isFloating) {
+              return Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   Text('This page will float!'),
@@ -34,11 +33,9 @@ class HomeScreen extends StatelessWidget {
                     },
                   ),
                 ],
-              ),
-            ),
-          ),
-        );
-      },
+              );
+            }),
+      ),
     );
   }
 }
