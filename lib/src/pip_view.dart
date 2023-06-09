@@ -64,9 +64,11 @@ class PIPViewState extends State<PIPView> with TickerProviderStateMixin {
         setState(() {});
         if (click)
           Future.delayed(Duration(seconds: 2)).then((value) {
-            click = true;
+            click = false;
             setState(() {});
           });
+
+        // click = !click;
       },
       topWidget: IgnorePointer(
         ignoring: isFloating,
