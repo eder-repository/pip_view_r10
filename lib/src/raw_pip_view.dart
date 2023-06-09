@@ -256,27 +256,27 @@ class RawPIPViewState extends State<RawPIPView> with TickerProviderStateMixin {
                   clipBehavior: Clip.none,
                   children: [
                     if (widget.topWidget != null) widget.topWidget!,
-                    if (widget.showOptions) ...[
-                      Container(
-                        height: 200,
-                        color: Colors.grey.withOpacity(.2),
-                      ),
-                      Center(
-                        child: Icon(
-                          Icons.play_arrow,
-                          color: Colors.black,
-                          size: 50,
-                        ),
-                      ),
-                      Positioned(
-                        top: -50,
-                        child: Icon(
-                          Icons.play_arrow,
-                          color: Colors.black,
-                          size: 50,
-                        ),
-                      ),
-                    ]
+                    // if (widget.showOptions) ...[
+                    //   Container(
+                    //     height: 200,
+                    //     color: Colors.grey.withOpacity(.2),
+                    //   ),
+                    //   Center(
+                    //     child: Icon(
+                    //       Icons.play_arrow,
+                    //       color: Colors.black,
+                    //       size: 50,
+                    //     ),
+                    //   ),
+                    //   Positioned(
+                    //     top: -50,
+                    //     child: Icon(
+                    //       Icons.play_arrow,
+                    //       color: Colors.black,
+                    //       size: 50,
+                    //     ),
+                    //   ),
+                    // ]
                   ],
                 ),
               ),
