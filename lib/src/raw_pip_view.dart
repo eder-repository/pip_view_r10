@@ -236,29 +236,23 @@ class RawPIPViewState extends State<RawPIPView> with TickerProviderStateMixin {
                         elevation: 10,
                         borderRadius: BorderRadius.circular(borderRadius),
                         child: Container(
-                          // clipBehavior: Clip.antiAlias,
-                          decoration: BoxDecoration(
-                            color: Colors.transparent,
-                            borderRadius: BorderRadius.circular(borderRadius),
-                          ),
-                          width: width,
-                          height: height,
-                          child: Transform.scale(
-                            scale: scale,
-                            child: child,
-                          ),
-                        ),
+                            // clipBehavior: Clip.antiAlias,
+                            decoration: BoxDecoration(
+                              color: Colors.transparent,
+                              borderRadius: BorderRadius.circular(borderRadius),
+                            ),
+                            width: width,
+                            height: height,
+                            child: child),
                       ),
                     ),
                   );
                 },
                 child: Stack(
-                  clipBehavior: Clip.none,
                   children: [
                     if (widget.topWidget != null) widget.topWidget!,
                     if (widget.showOptions) ...[
                       Container(
-                        height: 200,
                         color: Colors.grey.withOpacity(.2),
                       ),
                       Center(
@@ -269,7 +263,7 @@ class RawPIPViewState extends State<RawPIPView> with TickerProviderStateMixin {
                         ),
                       ),
                       Positioned(
-                        top: -50,
+                        top: 0,
                         child: Icon(
                           Icons.play_arrow,
                           color: Colors.black,
