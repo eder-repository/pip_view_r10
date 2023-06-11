@@ -20,6 +20,7 @@ class HomeScreen extends StatelessWidget {
         body: PIPView(
             floatingWidth: 300,
             floatingHeight: 150,
+            onPlay: () {},
             builder: (context, isFloating) {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,

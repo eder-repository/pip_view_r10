@@ -11,6 +11,8 @@ class RawPIPView extends StatefulWidget {
   final Widget? bottomWidget;
   final bool showOptions;
   final VoidCallback extend;
+  final VoidCallback onPlay;
+
   // this is exposed because trying to watch onTap event
   // by wrapping the top widget with a gesture detector
   // causes the tap to be lost sometimes because it
@@ -28,6 +30,7 @@ class RawPIPView extends StatefulWidget {
     this.onTapTopWidget,
     this.showOptions = false,
     required this.extend,
+    required this.onPlay,
   }) : super(key: key);
 
   @override
@@ -257,11 +260,14 @@ class RawPIPViewState extends State<RawPIPView> with TickerProviderStateMixin {
                       Container(
                         color: Colors.grey.withOpacity(.2),
                       ),
-                      Center(
-                        child: Icon(
-                          Icons.play_arrow,
-                          color: Colors.black,
-                          size: 50,
+                      GestureDetector(
+                        onTap: widget.onPlay,
+                        child: Center(
+                          child: Icon(
+                            Icons.play_arrow,
+                            color: Colors.black,
+                            size: 50,
+                          ),
                         ),
                       ),
                       Positioned(
