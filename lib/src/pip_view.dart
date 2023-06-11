@@ -10,6 +10,7 @@ class PIPView extends StatefulWidget {
   final bool avoidKeyboard;
   final VoidCallback onPlay;
   final bool isPlaying;
+  final Color colorIcon;
 
   final Widget Function(
     BuildContext context,
@@ -25,6 +26,7 @@ class PIPView extends StatefulWidget {
     this.avoidKeyboard = true,
     required this.onPlay,
     this.isPlaying = false,
+    this.colorIcon = Colors.white,
   }) : super(key: key);
 
   @override
@@ -91,6 +93,7 @@ class PIPViewState extends State<PIPView> with TickerProviderStateMixin {
       initialCorner: widget.initialCorner,
       onPlay: widget.onPlay,
       isPlaying: widget.isPlaying,
+      colorIcon: widget.colorIcon,
     );
   }
 }
