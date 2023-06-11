@@ -11,6 +11,7 @@ class PIPView extends StatefulWidget {
   final VoidCallback onPlay;
   final bool isPlaying;
   final Color colorIcon;
+  final double sizeIcon;
 
   final Widget Function(
     BuildContext context,
@@ -27,6 +28,7 @@ class PIPView extends StatefulWidget {
     required this.onPlay,
     this.isPlaying = false,
     this.colorIcon = Colors.white,
+    this.sizeIcon = 50,
   }) : super(key: key);
 
   @override
@@ -94,6 +96,7 @@ class PIPViewState extends State<PIPView> with TickerProviderStateMixin {
       onPlay: widget.onPlay,
       isPlaying: widget.isPlaying,
       colorIcon: widget.colorIcon,
+      sizeIcon: widget.sizeIcon,
     );
   }
 }
