@@ -12,6 +12,7 @@ class RawPIPView extends StatefulWidget {
   final bool showOptions;
   final VoidCallback extend;
   final VoidCallback onPlay;
+  final bool isPlaying;
 
   // this is exposed because trying to watch onTap event
   // by wrapping the top widget with a gesture detector
@@ -31,6 +32,7 @@ class RawPIPView extends StatefulWidget {
     this.showOptions = false,
     required this.extend,
     required this.onPlay,
+    this.isPlaying = false,
   }) : super(key: key);
 
   @override
@@ -264,7 +266,7 @@ class RawPIPViewState extends State<RawPIPView> with TickerProviderStateMixin {
                         onTap: widget.onPlay,
                         child: Center(
                           child: Icon(
-                            Icons.play_arrow,
+                            widget.isPlaying ? Icons.pause : Icons.play_arrow,
                             color: Colors.black,
                             size: 50,
                           ),
